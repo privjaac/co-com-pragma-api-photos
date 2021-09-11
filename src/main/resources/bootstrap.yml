@@ -1,0 +1,27 @@
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: co-com-pragma-api-photos
+  webflux:
+    base-path: /api/photos
+  rsocket:
+    server:
+      transport: websocket
+      mapping-path: ${spring.webflux.base-path}
+  data:
+    mongodb:
+      authentication-database: admin
+      username: mongo
+      password: "@mongo1234@"
+      database: db_pragma
+      port: 27017
+      host: db.privjaac.com
+  codec:
+    max-in-memory-size: 1280MB
+
+server:
+  port: 9903
+logging:
+  file:
+    name: /opt/app-config/log/${spring.application.name}.log
