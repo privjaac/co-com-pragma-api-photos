@@ -1,0 +1,16 @@
+version: "3.5"
+services:
+  api_photos:
+    container_name: api_photos
+    image: docker.privjaac.com/pragma/co-com-pragma-api-photos:latest
+    restart: always
+    build:
+      context: .
+    ports:
+      - "9903:9903"
+    networks:
+      - net_jaac
+networks:
+  net_jaac:
+    name: net_jaac
+    driver: bridge

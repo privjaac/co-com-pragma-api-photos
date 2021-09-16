@@ -25,3 +25,8 @@ server:
 logging:
   file:
     name: /opt/app-config/log/${spring.application.name}.log
+
+eureka:
+  client:
+    service-url:
+      defaultZone: https://eureka.privjaac.com/eureka/
