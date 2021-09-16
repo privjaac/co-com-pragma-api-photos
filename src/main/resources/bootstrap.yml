@@ -34,7 +34,7 @@ eureka:
     service-url:
       defaultZone: https://${eureka.instance.hostname}/eureka
   instance:
-    hostname: api.privjaac.com
+    hostname: eureka.privjaac.com
     status-page-url-path: /actuator/info
     health-check-url-path: /actuator/health
     prefer-ip-address: true
