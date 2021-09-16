@@ -3,6 +3,9 @@ spring:
     web-application-type: reactive
   application:
     name: co-com-pragma-api-photos
+  mvc:
+    servlet:
+      path: /api/photos
   webflux:
     base-path: /api/photos
   rsocket:
