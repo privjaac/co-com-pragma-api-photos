@@ -75,7 +75,7 @@ pipeline {
         stage('disponibilidad-contenedor') {
             steps {
                 sh '''
-                sleep 20s; curl -m 10 -s --head --request GET api.privjaac.com:9903/api/photos/actuator/health | grep 200
+                sleep 20s; curl -m 10 -s --head --request GET api.privjaac.com:9903/actuator/health | grep 200
                 '''
             }
         }
