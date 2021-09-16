@@ -31,9 +31,6 @@ eureka:
     service-url:
       defaultZone: https://eureka.privjaac.com/eureka
   instance:
-    preferIpAddress: true
-    statusPageUrlPath: /actuator/info
-    healthCheckUrlPath: /actuator/health
-#    status-page-url-path: ${spring.webflux.base-path}/actuator/info
-#    health-check-url-path: ${spring.webflux.base-path}/actuator/health
-#    prefer-ip-address: true
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
+    prefer-ip-address: true
