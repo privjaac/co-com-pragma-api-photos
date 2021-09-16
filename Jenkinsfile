@@ -53,7 +53,6 @@ pipeline {
         stage('construir-subida-imagen') {
             steps {
                 sh '''
-                #docker build -t docker.privjaac.com/pragma/co-com-pragma-api-photos:latest .
                 docker-compose -f dc-api-photos.yml build
                 docker-compose -f dc-api-photos.yml push
                 '''
@@ -76,7 +75,7 @@ pipeline {
         stage('disponibilidad-contenedor') {
             steps {
                 sh '''
-                sleep 25s; curl -m 10 -s --head --request GET api.privjaac.com:9903/actuator/health | grep 200
+                sleep 20s; curl -m 10 -s --head --request GET api.privjaac.com:9903/actuator/health | grep 200
                 '''
             }
         }
