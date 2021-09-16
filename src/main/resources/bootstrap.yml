@@ -30,3 +30,6 @@ eureka:
   client:
     service-url:
       defaultZone: https://eureka.privjaac.com/eureka/
+  instance:
+    status-page-url-path: ${spring.webflux.base-path}/info
+    health-check-url-path: ${spring.webflux.base-path}/health
