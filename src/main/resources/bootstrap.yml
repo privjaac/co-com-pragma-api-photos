@@ -29,8 +29,10 @@ logging:
 eureka:
   client:
     service-url:
-      defaultZone: https://eureka.privjaac.com/eureka
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
   instance:
+    hostname: api.privjaac.com
     status-page-url-path: /actuator/info
     health-check-url-path: /actuator/health
     prefer-ip-address: true
+
