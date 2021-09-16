@@ -4,6 +4,7 @@ services:
     container_name: api_photos
     image: docker.privjaac.com/pragma/co-com-pragma-api-photos:latest
     restart: always
+    hostname: api.privjaac.com
     build:
       context: .
     ports:
