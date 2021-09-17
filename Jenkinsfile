@@ -40,7 +40,7 @@ pipeline {
         stage('login-docker') {
             steps {
                 sh '''
-                docker login docker.privjaac.com -u ${DOCKER_USER} -p ${DOCKER_PASS}
+                #docker login docker.privjaac.com -u ${DOCKER_USER} -p ${DOCKER_PASS}
                 '''
             }
         }
