@@ -31,7 +31,7 @@ eureka:
     service-url:
       defaultZone: https://${eureka.instance.hostname}/eureka
   instance:
-    hostname: eureka.privjaac.com
+    hostname: api.privjaac.com${spring.webflux.base-path}
 
 management:
   endpoints:
