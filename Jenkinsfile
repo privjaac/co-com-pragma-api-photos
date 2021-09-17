@@ -48,7 +48,7 @@ pipeline {
             steps {
                 sh '''
                 #!/bin/bash
-                container_id=$(docker ps -aq --filter name=${CONTAINER_NAME})
+                container_id=$(docker ps -aq --filter name=api-photos)
                 if [! -z $container_id]
                 then
                     docker-compose -f dc-${CONTAINER_NAME}.yml up down
