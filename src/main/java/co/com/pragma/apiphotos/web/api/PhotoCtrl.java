@@ -8,6 +8,8 @@ import co.com.pragma.apiphotos.model.dto.photo.PhotoSearchDto;
 import co.com.pragma.apiphotos.model.vo.PhotoVo;
 import co.com.pragma.apiphotos.service.svc.PhotoSvc;
 import co.com.pragma.apiphotos.web.exception.GlobalException;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.SwaggerDefinition;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;

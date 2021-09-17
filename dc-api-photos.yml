@@ -1,7 +1,7 @@
 version: "3.5"
 services:
   api_photos:
-    container_name: api_photos
+    container_name: api-photos
     image: docker.privjaac.com/pragma/co-com-pragma-api-photos:latest
     restart: always
     hostname: api.privjaac.com

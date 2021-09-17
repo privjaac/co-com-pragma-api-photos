@@ -7,9 +7,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.server.WebFilter;
+import springfox.documentation.oas.annotations.EnableOpenApi;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
 
 import java.util.Objects;
 
+@EnableOpenApi
 @EnableAsync(proxyTargetClass = true)
 @Configuration
 public class GlobalConfig {
@@ -29,5 +33,10 @@ public class GlobalConfig {
          }
          return chain.filter(exchange.mutate().request(request.mutate().contextPath(basePath).build()).build());
       };
+   }
+
+   @Bean
+   public Docket api() {
+      return new Docket(DocumentationType.OAS_30).pathMapping(basePath);
    }
 }

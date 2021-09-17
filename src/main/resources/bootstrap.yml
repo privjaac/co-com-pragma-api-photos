@@ -3,9 +3,6 @@ spring:
     web-application-type: reactive
   application:
     name: co-com-pragma-api-photos
-  mvc:
-    servlet:
-      path: /api/photos
   webflux:
     base-path: /api/photos
   rsocket:
@@ -35,7 +32,9 @@ eureka:
       defaultZone: https://${eureka.instance.hostname}/eureka
   instance:
     hostname: eureka.privjaac.com
-    status-page-url-path: /actuator/info
-    health-check-url-path: /actuator/health
-    prefer-ip-address: true
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, refresh, logfile
