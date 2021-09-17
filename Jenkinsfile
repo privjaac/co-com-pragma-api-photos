@@ -7,9 +7,9 @@ pipeline {
         string(name: "APP_HOST_NAME", defaultValue: "api.privjaac.com", description: "DNS que apunta a nuestra aplicación.")
         string(name: "APP_HOST_PORT", defaultValue: "9903", description: "Puerto de arranque de nuestra aplicación.")
         string(name: "EUREKA_SERVER_HOST", defaultValue: "eureka.privjaac.com", description: "DNS que apunta a nuestro servidor eureka.")
-        string(name: "DOCKER_HOST", defaultValue: "docker.privjaac.com", description: "DNS que apunta a nuestro servidor de registro de imágenes de docker.")
-        string(name: "DOCKER_USER", defaultValue: "jaac.docker", description: "Usuario de acceso para nuestro servidor de imágenes de docker.")
-        string(name: "DOCKER_PASS", defaultValue: "jaac.docker", description: "Clave de acceso para nuestro servidor de imágenes de docker.")
+        string(name: "PRI_DOCKER_HOST", defaultValue: "docker.privjaac.com", description: "DNS que apunta a nuestro servidor de registro de imágenes de docker.")
+        string(name: "PRI_DOCKER_USER", defaultValue: "jaac.docker", description: "Usuario de acceso para nuestro servidor de imágenes de docker.")
+        string(name: "PRI_DOCKER_PASS", defaultValue: "jaac.docker", description: "Clave de acceso para nuestro servidor de imágenes de docker.")
     }
     tools {
         jdk 'JAVA_11'
@@ -40,7 +40,7 @@ pipeline {
         stage('login-docker') {
             steps {
                 sh '''
-                #docker login docker.privjaac.com -u ${DOCKER_USER} -p ${DOCKER_PASS}
+                docker login docker.privjaac.com -u ${PRI_DOCKER_USER} -p ${PRI_DOCKER_PASS}
                 '''
             }
         }
