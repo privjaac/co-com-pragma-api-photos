@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters {
         string(name: "APP_NAME", defaultValue: "co-com-pragma-api-photos", description: "Nombre de nuestra app.")
-        string(name: "APP_VERSION", defaultValue: "latest", description: "Versión de nuestra app.")
+        string(name: "APP_VERSION", defaultValue: "latest", description: "Version de nuestra app.")
         string(name: "CONTAINER_NAME", defaultValue: "api-photos", description: "Nombre del contendor para nuestra app.")
         string(name: "APP_HOST_NAME", defaultValue: "api.privjaac.com", description: "DNS que apunta a nuestra app.")
         string(name: "APP_HOST_PORT", defaultValue: "9903", description: "Puerto de arranque de nuestra app.")
