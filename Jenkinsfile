@@ -40,7 +40,7 @@ pipeline {
         stage('login-docker') {
             steps {
                 sh '''
-                docker login docker.privjaac.com -u ${PRI_DOCKER_USER} -p ${PRI_DOCKER_PASS}
+                docker login ${PRI_DOCKER_HOST} -u ${PRI_DOCKER_USER} -p ${PRI_DOCKER_PASS}
                 '''
             }
         }
@@ -48,13 +48,13 @@ pipeline {
             steps {
                 sh '''
                 #!/bin/bash
-                container_id=$(docker ps -aq --filter name=api-photos)
+                container_id=$(docker ps -aq --filter name=${CONTAINER_NAME})
                 echo "$container_id"
                 if [! -z $container_id]
                 then
-                    docker-compose -f dc-api-photos.yml up down
+                    docker-compose -f dc-${CONTAINER_NAME}.yml up down
                 fi
-                image_id=$(docker images -q name=docker.privjaac.com/pragma/${APP_NAME}:${APP_VERSION})
+                image_id=$(docker images -q name=${PRI_DOCKER_HOST}/pragma/${APP_NAME}:${APP_VERSION})
                 if [! -z $image_id]
                 then
                     docker rmi $image_id
