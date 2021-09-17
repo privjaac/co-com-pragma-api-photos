@@ -53,7 +53,7 @@ pipeline {
                 then
                     docker-compose -f dc-${CONTAINER_NAME}.yml up down
                 fi
-                image_id=$(docker images -q name=${DOCKER_HOST}/pragma/${APP_NAME}:${APP_VERSION})
+                image_id=$(docker images -q name=docker.privjaac.com/pragma/${APP_NAME}:${APP_VERSION})
                 if [! -z $image_id]
                 then
                     docker rmi $image_id
