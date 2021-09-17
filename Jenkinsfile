@@ -40,7 +40,7 @@ pipeline {
         stage('login-docker') {
             steps {
                 sh '''
-                docker login ${params.DOCKER_HOST} -u ${params.DOCKER_USER} -p ${params.DOCKER_PASS}
+                docker login ${DOCKER_HOST} -u ${DOCKER_USER} -p ${DOCKER_PASS}
                 '''
             }
         }
@@ -48,12 +48,12 @@ pipeline {
             steps {
                 sh '''
                 #!/bin/bash
-                container_id=$(docker ps -aq --filter name=${params.CONTAINER_NAME})
+                container_id=$(docker ps -aq --filter name=${CONTAINER_NAME})
                 if [! -z $container_id]
                 then
-                    docker-compose -f dc-${params.CONTAINER_NAME}.yml up down
+                    docker-compose -f dc-${CONTAINER_NAME}.yml up down
                 fi
-                image_id=$(docker images -q name=${DOCKER_HOST}/pragma/${params.APP_NAME}:${params.APP_VERSION})
+                image_id=$(docker images -q name=${DOCKER_HOST}/pragma/${APP_NAME}:${APP_VERSION})
                 if [! -z $image_id]
                 then
                     docker rmi $image_id
@@ -64,15 +64,15 @@ pipeline {
         stage('construir-subida-imagen') {
             steps {
                 sh '''
-                docker-compose -f dc-${params.CONTAINER_NAME}.yml build
-                docker-compose -f dc-${params.CONTAINER_NAME}.yml push
+                docker-compose -f dc-${CONTAINER_NAME}.yml build
+                docker-compose -f dc-${CONTAINER_NAME}.yml push
                 '''
             }
         }
         stage('ejecutar-contenedor-imagen') {
             steps {
                 sh '''
-                docker-compose -f dc-${params.CONTAINER_NAME}.yml up -d
+                docker-compose -f dc-${CONTAINER_NAME}.yml up -d
                 '''
             }
         }
@@ -86,7 +86,7 @@ pipeline {
         stage('disponibilidad-contenedor') {
             steps {
                 sh '''
-                sleep 20s; curl -m 10 -s --head --request GET ${params.APP_HOST_NAME}:${params.APP_HOST_PORT}/api/photos/actuator/health | grep 200
+                sleep 20s; curl -m 10 -s --head --request GET ${APP_HOST_NAME}:${APP_HOST_PORT}/api/photos/actuator/health | grep 200
                 '''
             }
         }
